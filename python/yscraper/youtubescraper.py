@@ -9,19 +9,15 @@ def getLinks(searchTitle : str) -> list:
     cleanedTitle = (searchTitle.strip()).replace(' ', '+')
     SEARCH_PRE = "https://www.youtube.com/results?search_query="
     VIDEO_REG = r'"/watch\?v=.*?"'
-    YOUTUBE_BASE = "https://www.youtube.com"
-    
+    YOUTUBE_BASE = "https://www.youtube.com"  
     # craft url
     url = SEARCH_PRE + cleanedTitle
     # fetch page
     page = requests.get(url).text
-
     # find links using regex
     links = re.findall(VIDEO_REG, page)
-
     # format links
     links = [YOUTUBE_BASE + link.strip('"') for link in links]
-
     # return
     return links
 
@@ -45,9 +41,14 @@ def getVideoInfo(url : str) -> dict:
     # find links using regex
     likes = re.findall(LIKE_REG, page)
     dislikes = re.findall(DISLIKE_REG, page)
-
-    info["likes"] = int(likes[0].replace(',',''))
-    info["dislikes"] = int(dislikes[0].replace(',',''))
+    # video has likes and dislikes values?
+    if(len(likes) != 0 and len(dislikes) != 0):
+        info["likes"] = int(likes[0].replace(',',''))
+        info["dislikes"] = int(dislikes[0].replace(',',''))
+    else:
+        print(f"\033[93m[Warning] No like or dislike value found for \033[91m[{video.title}]\033[0m")
+        info["likes"] = -1 
+        info["dislikes"] = -1
     return info
 
 def downloadVideo(url : str, path : str, filename : str, width = 360, extension = "mp4"):
@@ -77,7 +78,7 @@ def downloadVideo(url : str, path : str, filename : str, width = 360, extension 
     
     # print(f"FOUND OUT MATCHING INDEX TO BE {index}")
     # strm = video.streams[0]
-    print(f"Target Video Resolution: {video.videostreams[i].resolution} and extension: {video.videostreams[i].extension}")
-    vs = video.videostreams[i]
+    print(f"Target video resolution: {video.videostreams[index].resolution} and extension: {video.videostreams[index].extension}")
+    vs = video.videostreams[index]
     strippedpath = path.rstrip('/').rstrip('\\').rstrip('/')
     vs.download(filepath=f"{strippedpath}/{filename}.{vs.extension}")
