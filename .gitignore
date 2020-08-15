@@ -1,0 +1,4 @@
+.vscode/*
+python/_pycache__/*
+python/.vscode/*
+python/out/*
