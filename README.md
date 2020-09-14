@@ -20,6 +20,8 @@
 
 ------------------
 ## Default Directories
+Movie names, by default are pulled from:
+> *python/downloadlist.txt*
 
 All information, by default are saved as:
 > *python/out/data.json*
