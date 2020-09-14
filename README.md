@@ -33,4 +33,4 @@ All processed videos, by default are saved under:
 All compressed data, by default are saved under:
 > *python/out/compresseddata/*
 
-**Make the directories beforehand if you are working with default settings and clean the directories before each run manually. Work with only */python/batchdriver.py* which includes all the settings in the beginning of the file. Alternatively you can write your own driver. The APIs are *vidcomp*, *vidproc* and *yscrappper*.**
+**Make the directories beforehand if you are working with default settings and clean the directories before each run manually. Run and work with only */python/batchdriver.py* which includes all the settings in the beginning of the file. Alternatively you can write your own driver. The APIs are *vidcomp*, *vidproc* and *yscrappper*.**
