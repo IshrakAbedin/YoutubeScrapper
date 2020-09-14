@@ -11,4 +11,4 @@ vidInfo = yes.getVideoInfo(links[0])
 for key in vidInfo:
     print(f"{key} = {vidInfo[key]}")
 
-yes.downloadVideo(links[0], "./out/", title, width=360, extension="mp4")
+#yes.downloadVideo(links[0], "./out/", title, width=360, extension="mp4")

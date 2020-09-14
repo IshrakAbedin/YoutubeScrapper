@@ -34,13 +34,20 @@ def getVideoInfo(url : str) -> dict:
     # info["dislikes"] = video.dislikes
 
     # manual scraping for likes and dislikes
-    LIKE_REG = r'{"label":"([0-9,]*) likes"}'
-    DISLIKE_REG = r'{"label":"([0-9,]*) dislikes"}'
+    # LIKE_REG = r'{"label":"([0-9,]*) likes"}'
+    # DISLIKE_REG = r'{"label":"([0-9,]*) dislikes"}'
+    LIKE_REG = r'{"label":"([0-9,]*)টি পছন্দ"}'
+    DISLIKE_REG = r'{"label":"([0-9,]*)টি অপছন্দ"}'
     page = requests.get(url).text
+
+    # # debug page dump
+    # with open("./dump.txt", "w+", encoding="utf-8") as dump:
+    #     dump.write(page)
 
     # find links using regex
     likes = re.findall(LIKE_REG, page)
     dislikes = re.findall(DISLIKE_REG, page)
+
     # video has likes and dislikes values?
     if(len(likes) != 0 and len(dislikes) != 0):
         info["likes"] = int(likes[0].replace(',',''))
