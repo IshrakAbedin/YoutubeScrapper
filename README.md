@@ -21,7 +21,7 @@
 ------------------
 ## Note
 
-The keys in *downloadlist.txt* are used to save the files. So make sure they **do not contain any special character** that cannot be used to save files in file system and keep them **unique**.
+The keys in *downloadlist.txt* are used to save the files. So make sure they **do not contain any special character** like `*, ., -, \` etc. that cannot be used to save files in file system and keep them **unique**.
 
 ------------------
 ## Default Directories
