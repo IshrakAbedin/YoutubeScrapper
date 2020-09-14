@@ -19,7 +19,14 @@
 **Install using *pip* or *conda*.**
 
 ------------------
+## Note
+
+The keys in *downloadlist.txt* are used to save the files. So make sure they **do not contain any special character** that cannot be used to save files in file system and keep them **unique**.
+
+------------------
 ## Default Directories
+**Make the directories beforehand if you are working with default settings and clean the directories before each run manually. Run and work with only */python/batchdriver.py* which includes all the settings in the beginning of the file. Alternatively you can write your own driver. The APIs are *vidcomp*, *vidproc* and *yscrappper*.**
+
 Movie names, by default are pulled from:
 > *python/downloadlist.txt*
 
@@ -35,4 +42,3 @@ All processed videos, by default are saved under:
 All compressed data, by default are saved under:
 > *python/out/compresseddata/*
 
-**Make the directories beforehand if you are working with default settings and clean the directories before each run manually. Run and work with only */python/batchdriver.py* which includes all the settings in the beginning of the file. Alternatively you can write your own driver. The APIs are *vidcomp*, *vidproc* and *yscrappper*.**
